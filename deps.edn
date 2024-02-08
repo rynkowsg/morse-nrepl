@@ -14,12 +14,11 @@
   ;; launch nrepl with middleware, then open morse with (dev.nu.morse/launch-in-proc)
   :nrepl-morse
   {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                io.github.rynkowsg/morse-nrepl {:local/root "."}}
-   :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/wrap]"]}
+                pl.rynkowski/morse-nrepl {:local/root "."}}
+   :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/wrap]"]}
 
   ;; launch nrepl with middleware launches morse on REPL start
   :nrepl-morse-on-start
   {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                io.github.rynkowsg/morse-nrepl {:local/root "."}}
-   :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/launch-and-wrap]"]}}}
-
+                pl.rynkowski/morse-nrepl {:local/root "."}}
+   :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/launch-and-wrap]"]}}}

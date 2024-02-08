@@ -22,48 +22,42 @@ aiming to ease the transition from REBL to morse.
 
 In this setup, similarly to REBL+nrepl, we assume you run morse within the nREPL process.
 When you start the process you can apply one of two middlewares:
-- `morse-nrepl/wrap` - all the forms sent to nREPL server are sent to morse,
-- `morse-nrepl/launch-and-wrap` - same as above plus the launch morse on process start.
+- `pl.rynkowski.morse-nrepl/wrap` - all the forms sent to nREPL server are sent to morse,
+- `pl.rynkowski.morse-nrepl/launch-and-wrap` - same as above plus the launch morse on process start.
 
-If you apply `morse-nrepl/wrap`, you need to launch morse with `(dev.nu.morse/launch-in-proc)`.
+If you apply `pl.rynkowski.morse-nrepl/wrap`, you need to launch morse
+with `(dev.nu.morse/launch-in-proc)` if you want to make any use of the middleware.
 
 The only forms that are not sent to morse are Cursive's forms that are filtered out.
 
 ### Dependency
 
 ```clojure
-io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
-                                :git/branch "master"
-                                :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
+pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
+                          :git/branch "master"
+                          :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
 ```
 
 ### Example aliases
 
 ```clojure
-;; deps.edn
-{
- ;; ...
- :paths ["src"]
+;; launch nrepl with middleware applied, then open morse with `(dev.nu.morse/launch-in-proc)`.
+:nrepl-morse
+{:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+              pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
+                                        :git/branch "master"
+                                        :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
+              nrepl/nrepl {:mvn/version "1.1.0"}}
+ :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/wrap]"]}
 
- :aliases {;; launch nrepl with middleware applied, then open morse with `(dev.nu.morse/launch-in-proc)`.
-           :nrepl-morse
-           {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                         io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
-                                                         :git/branch "master"
-                                                         :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
-                         nrepl/nrepl {:mvn/version "1.1.0"}}
-            :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/wrap]"]}
-
-           ;; launch nrepl and morse
-           :nrepl-morse-on-start
-           {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                         io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
-                                                         :git/branch "master"
-                                                         :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
-                         nrepl/nrepl {:mvn/version "1.1.0"}}
-            :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/launch-and-wrap]"]}}
- ;; ...
- }
+;; launch nrepl and morse
+:nrepl-morse-on-start
+{:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+              pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
+                                        :git/branch "master"
+                                        :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
+              nrepl/nrepl {:mvn/version "1.1.0"}}
+ :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/launch-and-wrap]"]}}
 ```
 
 ## More

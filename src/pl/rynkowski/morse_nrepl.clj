@@ -1,4 +1,4 @@
-(ns morse-nrepl
+(ns pl.rynkowski.morse-nrepl
   (:require
    [clojure.string :as str]
    [nrepl.middleware :refer [set-descriptor!]]
@@ -71,10 +71,10 @@
 
 (set-descriptor! #'wrap
                  {:requires #{#'wrap-print}
-                  :expects  #{"eval"}
-                  :handles  {}})
+                  :expects #{"eval"}
+                  :handles {}})
 
 (set-descriptor! #'launch-and-wrap
                  {:requires #{#'wrap-print}
-                  :expects  #{"eval"}
-                  :handles  {}})
+                  :expects #{"eval"}
+                  :handles {}})
