@@ -1,0 +1,25 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <ClojureCodeStyleSettings>
+      <option name="alignMapValues" value="false" />
+      <option name="alignReaderConditionals" value="false" />
+      <option name="commentAlignColumn" value="0" />
+      <option name="forceOnlyIndent" value="true" />
+      <option name="indentCustomisations">
+        <map>
+          <!--    0 - visible in IDE: 0 -->
+          <!--    1 - visible in IDE: 1 -->
+          <!--   -1 - visible in IDE: indent -->
+          <!-- 1000 - visible in IDE: function: align all arguments like in functions,
+                                                vertically to the first argument -->
+          <entry key="-&gt;" value="1000" />
+          <entry key="-&gt;&gt;" value="1000" />
+          <entry key="clojure.core/-&gt;" value="1000" />
+          <entry key="clojure.core/-&gt;&gt;" value="1000" />
+          <entry key="clojure.core/as-&gt;" value="-1" />
+          <entry key="hyperfiddle.rcf/tests" value="1" />
+        </map>
+      </option>
+    </ClojureCodeStyleSettings>
+  </code_scheme>
+</component>
