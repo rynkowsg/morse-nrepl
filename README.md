@@ -33,7 +33,8 @@ The only forms that are not sent to morse are Cursive's forms that are filtered 
 
 ```clojure
 io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
-                                :git/branch "master"}
+                                :git/branch "master"
+                                :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
 ```
 
 ### Example aliases
@@ -47,14 +48,18 @@ io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrep
  :aliases {;; launch nrepl with middleware applied, then open morse with `(dev.nu.morse/launch-in-proc)`.
            :nrepl-morse
            {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                         io.github.rynkowsg/morse-nrepl {:local/root "."}
+                         io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
+                                                         :git/branch "master"
+                                                         :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
                          nrepl/nrepl {:mvn/version "1.1.0"}}
             :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/wrap]"]}
 
            ;; launch nrepl and morse
            :nrepl-morse-on-start
            {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
-                         io.github.rynkowsg/morse-nrepl {:local/root "."}
+                         io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
+                                                         :git/branch "master"
+                                                         :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
                          nrepl/nrepl {:mvn/version "1.1.0"}}
             :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[morse-nrepl/launch-and-wrap]"]}}
  ;; ...
