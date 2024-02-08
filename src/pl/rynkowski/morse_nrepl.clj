@@ -9,14 +9,24 @@
 ;; ----- require morse fns -------------
 
 (defn ^:private require-fn
-  [sym]
-  (try
-    (requiring-resolve sym)
-    (catch Exception _
-      (throw "morse not available"))))
+  ([sym]
+   (require-fn sym {:throw-on-fail? true}))
+  ([sym {:keys [throw-on-fail? failure-msg] :as _opts}]
+   (try
+     (let [f (requiring-resolve sym)]
+       (when (nil? f) (throw (ex-info "Could not find required function" {:symbol sym})))
+       f)
+     (catch Exception e
+       (let [failure-msg' (or failure-msg (str "Symbol '" sym " can't be found in classpath."))]
+         (if throw-on-fail?
+           (throw (ex-info failure-msg' {:origin e}))
+           (fn [] (println failure-msg'))))))))
+#_ (require-fn 'pl.rynkowski.repl-runner.utils/require-fn)
+#_ (require-fn 'pl.rynkowski.repl-rnner.utils/dfd)
+#_ ((require-fn 'pl.rynkowski.repl-rnner.utils/dfd {:throw-on-fail? false}))
 
-(def ^:private morse-ui-in-proc (require-fn 'dev.nu.morse/launch-in-proc))
-(def ^:private morse-submit (require-fn 'dev.nu.morse/submit))
+(def ^:private morse-ui-in-proc (require-fn 'dev.nu.morse/launch-in-proc {:throw-on-fail? false}))
+(def ^:private morse-submit (require-fn 'dev.nu.morse/submit {:throw-on-fail? false}))
 
 ;; --------- cursive check ------------
 
