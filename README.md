@@ -74,4 +74,4 @@ io.github.rynkowsg/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrep
 
 Copyright © 2024 Grzegorz Rynkowski
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Released under the MIT license.
