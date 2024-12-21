@@ -1,24 +1,24 @@
 {:paths ["src"]
 
  :deps {org.clojure/clojure {:mvn/version "1.12.0"}
-        nrepl/nrepl {:mvn/version "1.1.0"}}
+        nrepl/nrepl {:mvn/version "1.3.0"}}
 
  :aliases
  {;; EXAMPLE usage of morse w/ & w/o this middleware:
 
   ;; launch morse standalone, it connects to localhost:5555 by default
   :morse
-  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}}
+  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.10.06.02" :git/sha "88b5ff7"}}
    :main-opts  ["-m" "cognitect.rebl"]}
 
   ;; launch nrepl with middleware, then open morse with (dev.nu.morse/launch-in-proc)
   :nrepl-morse
-  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.10.06.02" :git/sha "88b5ff7"}
                 pl.rynkowski/morse-nrepl {:local/root "."}}
    :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/wrap]"]}
 
   ;; launch nrepl with middleware launches morse on REPL start
   :nrepl-morse-on-start
-  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+  {:extra-deps {io.github.nubank/morse {:git/tag "v2023.10.06.02" :git/sha "88b5ff7"}
                 pl.rynkowski/morse-nrepl {:local/root "."}}
    :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/launch-and-wrap]"]}}}
