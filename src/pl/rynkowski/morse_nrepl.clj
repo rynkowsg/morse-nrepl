@@ -30,7 +30,7 @@
 
 ;; --------- cursive check ------------
 
-(def ^:private cursive-commands
+(def ^:private cursive-commands-starting-with
   ["(binding [*print-meta* true] (pr-str (cursive.riddley/macroexpand-all"
    "(clojure.core/with-redefs [clojure.test/do-report (clojure.core/fn"
    "(cursive.repl"
@@ -40,13 +40,22 @@
    "(try (clojure.core/cond (clojure.core/resolve (quote cljs.core/*clojurescript-version*)) :cljs (java.la"
    "(try (clojure.lang.Compiler/load (java.io.StringReader. ((clojure.core/deref"])
 
-(defn ->bool [p] (if p true false))
+(defn cursive-common-beginning?
+  [{:keys [op code] :as _req}]
+  (and (= op "eval")
+       (some #(str/starts-with? code %) cursive-commands-starting-with)))
+
+;; eval 42 issue: https://github.com/cursive-ide/cursive/issues/3001
+(defn cursive-42?
+  [{:keys [op code ns] :as _req}]
+  (and (= op "eval") (= code "42") (= ns nil)))
 
 (defn cursive?
   "Takes an nREPL request and returns true if a noisy cursive eval request."
-  [{:keys [code op] :as _request}]
-  (->bool (and (= op "eval")
-               (some #(str/starts-with? code %) cursive-commands))))
+  [request]
+  (let [pred (some-fn cursive-42? cursive-common-beginning?)]
+    (pred request)))
+#_ (cursive? {:op "eval" :code 42})
 
 ;; -------- nrepl middleware ----------
 
