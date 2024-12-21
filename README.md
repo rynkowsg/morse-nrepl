@@ -35,7 +35,7 @@ The only forms that are not sent to morse are Cursive's forms that are filtered 
 ```clojure
 pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
                           :git/branch "master"
-                          :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
+                          :git/sha "acfc3293f2c3869ddfa7b39e414f5638923fabc7"}
 ```
 
 ### Example aliases
@@ -43,20 +43,20 @@ pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
 ```clojure
 ;; launch nrepl with middleware applied, then open morse with `(dev.nu.morse/launch-in-proc)`.
 :nrepl-morse
-{:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+{:extra-deps {io.github.nubank/morse {:git/tag "v2023.10.06.02" :git/sha "88b5ff7"}
               pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
                                         :git/branch "master"
-                                        :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
-              nrepl/nrepl {:mvn/version "1.1.0"}}
+                                        :git/sha "acfc3293f2c3869ddfa7b39e414f5638923fabc7"}
+              nrepl/nrepl {:mvn/version "1.3.0"}}
  :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/wrap]"]}
 
 ;; launch nrepl and morse
 :nrepl-morse-on-start
-{:extra-deps {io.github.nubank/morse {:git/tag "v2023.04.30.01" :git/sha "d99b09c"}
+{:extra-deps {io.github.nubank/morse {:git/tag "v2023.10.06.02" :git/sha "88b5ff7"}
               pl.rynkowski/morse-nrepl {:git/url "https://github.com/rynkowsg/morse-nrepl.git"
                                         :git/branch "master"
-                                        :git/sha "ae91504f22658cd46f9e68daa3664505316d6179"}
-              nrepl/nrepl {:mvn/version "1.1.0"}}
+                                        :git/sha "acfc3293f2c3869ddfa7b39e414f5638923fabc7"}
+              nrepl/nrepl {:mvn/version "1.3.0"}}
  :main-opts  ["-m" "nrepl.cmdline" "-i" "--middleware" "[pl.rynkowski.morse-nrepl/launch-and-wrap]"]}}
 ```
 
