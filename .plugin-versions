@@ -1,0 +1,4 @@
+# plugin-name        git-url                                                    git-ref (hash, tag, or branch)
+asdf-plugin-manager  https://github.com/asdf-community/asdf-plugin-manager.git  b5862c1
+clojure              https://github.com/halcyon/asdf-clojure.git                01fbe94
+java                 https://github.com/halcyon/asdf-java.git                   aa11e62

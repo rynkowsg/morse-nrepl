@@ -1,8 +1,8 @@
-# RELEASES: https://github.com/clojure/brew-install/releases
-# PLUGIN: https://github.com/halcyon/asdf-clojure
+# https://github.com/asdf-community/asdf-plugin-manager/releases
+asdf-plugin-manager 1.4.0
+
+# https://github.com/clojure/brew-install/releases
 clojure 1.11.1.1435
 
-# RELEASES: https://github.com/corretto/corretto-17/releases
-# CHANGELOG: https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md
-# PLUGIN: https://github.com/halcyon/asdf-java
+# https://adoptium.net/temurin/archive/?version=19
 java corretto-19.0.2.7.1
